@@ -1,2 +1,3 @@
 # python_scrapy
-learn spider user python and redis
+learn spider use python and redis
+redis connect

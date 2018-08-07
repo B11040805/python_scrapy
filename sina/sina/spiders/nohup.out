@@ -1,0 +1,94 @@
+2018-08-05 13:38:35 [scrapy.utils.log] INFO: Scrapy 1.5.0 started (bot: sina)
+2018-08-05 13:38:35 [scrapy.utils.log] INFO: Versions: lxml 4.2.3.0, libxml2 2.9.8, cssselect 1.0.3, parsel 1.5.0, w3lib 1.19.0, Twisted 18.4.0, Python 2.7.5 (default, Apr 11 2018, 07:36:10) - [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)], pyOpenSSL 18.0.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Linux-3.10.0-862.3.2.el7.x86_64-x86_64-with-centos-7.5.1804-Core
+2018-08-05 13:38:35 [scrapy.crawler] INFO: Overridden settings: {'NEWSPIDER_MODULE': 'sina.spiders', 'SPIDER_MODULES': ['sina.spiders'], 'ROBOTSTXT_OBEY': True, 'BOT_NAME': 'sina'}
+2018-08-05 13:38:35 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.corestats.CoreStats']
+2018-08-05 13:38:35 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-08-05 13:38:35 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-08-05 13:38:35 [scrapy.middleware] INFO: Enabled item pipelines:
+[]
+2018-08-05 13:38:35 [scrapy.core.engine] INFO: Spider opened
+2018-08-05 13:38:35 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-08-05 13:38:35 [scrapy.extensions.telnet] DEBUG: Telnet console listening on 127.0.0.1:6024
+2018-08-05 13:38:35 [scrapy.core.engine] ERROR: Error while obtaining start requests
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/site-packages/scrapy/core/engine.py", line 127, in _next_request
+    request = next(slot.start_requests)
+  File "/root/code/sina/sina/spiders/sina_spiders.py", line 56, in start_requests
+    yield Request(url, callback=self.parse)
+  File "/usr/lib64/python2.7/site-packages/scrapy/http/request/__init__.py", line 25, in __init__
+    self._set_url(url)
+  File "/usr/lib64/python2.7/site-packages/scrapy/http/request/__init__.py", line 56, in _set_url
+    raise TypeError('Request url must be str or unicode, got %s:' % type(url).__name__)
+TypeError: Request url must be str or unicode, got NoneType:
+2018-08-05 13:38:35 [scrapy.core.engine] INFO: Closing spider (finished)
+2018-08-05 13:38:35 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'finish_reason': 'finished',
+ 'finish_time': datetime.datetime(2018, 8, 5, 5, 38, 35, 909319),
+ 'log_count/DEBUG': 1,
+ 'log_count/ERROR': 1,
+ 'log_count/INFO': 7,
+ 'memusage/max': 45375488,
+ 'memusage/startup': 45375488,
+ 'start_time': datetime.datetime(2018, 8, 5, 5, 38, 35, 881072)}
+2018-08-05 13:38:35 [scrapy.core.engine] INFO: Spider closed (finished)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8;"/>
+    <meta name="renderer" content="webkit">
+    <META http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,user-scalable=yes">
+    <meta name="keywords" content="Biny, PHP, framework">
+    <meta name="description" content="Biny is a tiny, high-performance PHP framework for web applications ">
+
+    <title>Biny</title>
+    <link rel="icon" href="/static/images/icon/favicon.ico" type="image/x-icon" />
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css"/>
+
+</head><script type="text/javascript">
+    var webRoot = '';
+</script>
+<body>
+<div class="container">
+
+<div class="messageImage">
+    <img src="/static/images/source/error.gif" />
+</div>
+<div class="messageInfo">Unauthorized</div>
+<div class="messageUrl">
+    现在您可以：
+    <a href="javascript:window.history.go(-1);" class='mlink'>[后退]</a>
+    <a href="/" class='mlink'>[返回首页]</a>
+</div>
+
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<script type="text/javascript" src="/static/js/main.js"></script>

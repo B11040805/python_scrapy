@@ -32,23 +32,6 @@ class SinaSpider(scrapy.Spider):
         r = redis.Redis(host='127.0.0.1',port=6379)
         url = r.rpop('urllist')
         return url
-        if not data :
-            newurl = oldUrl
-            print newurl
-            return oldUrl
-        if status != 200 :
-            newurl = oldUrl
-            print newurl
-            return oldUrl
-        l = oldUrl.split('_')  #用等号分割字符串
-        oldIdStr = l[3].split('.')
-        oldID = int(oldIdStr[0])
-        newID = oldID + 1
-        #if newID == 286470:
-        #    return 
-        newurl = l[0] + '_' + l[1] + '_' + l[2] + '_' + str(newID) + '.' + oldIdStr[1]
-        print newurl
-        return str(newurl)
 
     def start_requests(self):
         #r = redis.Redis(host='127.0.0.1',port=6379)
@@ -85,11 +68,7 @@ class SinaSpider(scrapy.Spider):
             #print line
             for item in sel.xpath('//p/text()'):
                 print item.extract()
-            #content = {}
-            #content['p'] = line[4]
-            #content['img'] = line[0]
-            #contentArr.append(content)
-            #print line[0], line[4]
+
         for sel in response.xpath('//div[@class="img_wrapper"]'):
             for item in sel.xpath('//img/@src'):
                 print item.extract()
@@ -106,6 +85,3 @@ class SinaSpider(scrapy.Spider):
             next_url = 'http://slide.ent.sina.com.cn/film/h/slide_4_704_211.html' #self.get_next_url(response.url, status, contentArr)
             yield Request(next_url, dont_filter = True, callback=self.parse)
         return
-       #filename = response.url.split("/")[-2]
-        #with open(filename, 'wb') as f:
-        #    f.write(response.body)

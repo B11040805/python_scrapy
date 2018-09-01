@@ -12,10 +12,11 @@ import time
 import redis
 from scrapy import Request
 class SinaSpider(scrapy.Spider):
+    # 爬取新浪图集的首页，获得链接
     name = "sina_index"
     allowed_domains = ["sina.com.cn"]
     start_urls = [
-       "http://slide.photo.sina.com.cn" 
+       "http://slide.photo.sina.com.cn"
     ]
     cookies = {}
     headers = {
@@ -29,17 +30,25 @@ class SinaSpider(scrapy.Spider):
     }
 
     def get_next_url(self, oldUrl, status, data):
-        return self.start_urls[0]
+        return 'http://slide.photo.sina.com.cn'
 
     def start_requests(self):
         yield Request(self.start_urls[0], callback=self.parse)
-    
+
     def parse(self, response):
+        #print response.body
+        #sys.exit()
         status = response.status
         contentArr = []
-        r = redis.Redis(host='127.0.0.1',port=6379)
+        r = redis.Redis(host='127.0.0.1',port=6389)
+        #r.set('name','hello')
+        #print (r.get('name').decode('utf8'))
         for sel in response.xpath('//a'):
+        #    print sel
             url = sel.extract()
+            #title = title.replace('<title>','');
+            #title = title.replace('</title>','');
+            #print url
             if 'slide' in url:
                 if 'html' in url:
                     #print url
@@ -48,9 +57,9 @@ class SinaSpider(scrapy.Spider):
                     print resUrl
                     value = r.get(resUrl)
                     if value < 1:
-                        r.set(resUrl, 1)
+                        r.setex(resUrl, 1, 6400)
                         r.lpush('urllist', resUrl)
-                        
+
         wait = random.randint(30,60)
         time.sleep(wait)
         next_url = self.get_next_url(response.url, status, contentArr)
